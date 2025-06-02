@@ -1,0 +1,104 @@
+/* Styles spécifiques pour la liste des produits */
+
+/* Animation pour les lignes du tableau */
+.product-row {
+  transition: all 0.2s ease-in-out;
+}
+
+.product-row:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+/* Animation pour les boutons d'action */
+.action-button {
+  transition: transform 0.2s ease;
+}
+
+.action-button:hover {
+  transform: scale(1.15);
+}
+
+/* Animation pour le modal */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideIn {
+  from { transform: translateY(-20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.modal-overlay {
+  animation: fadeIn 0.3s ease-out;
+}
+
+.modal-content {
+  animation: slideIn 0.3s ease-out;
+}
+
+/* Animation pour les badges de statut */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+.status-critical {
+  animation: pulse 2s infinite;
+}
+
+/* Responsive design */
+@media (max-width: 1280px) {
+  .grid-cols-7 {
+    grid-template-columns: repeat(6, 1fr);
+  }
+
+  .status-column {
+    display: none;
+  }
+}
+
+@media (max-width: 1024px) {
+  .grid-cols-7, .grid-cols-6 {
+    grid-template-columns: repeat(5, 1fr);
+  }
+
+  .date-column {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .grid-cols-7, .grid-cols-6, .grid-cols-5 {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .stock-column {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .grid-cols-7, .grid-cols-6, .grid-cols-5, .grid-cols-4 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .category-column {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .grid-cols-7, .grid-cols-6, .grid-cols-5, .grid-cols-4, .grid-cols-3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .price-column {
+    display: none;
+  }
+}

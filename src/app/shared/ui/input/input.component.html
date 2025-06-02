@@ -1,0 +1,28 @@
+<div class="space-y-1">
+  <label
+    [for]="id"
+    [ngClass]="getLabelClasses()"
+    class="block text-sm font-medium text-gray-700"
+  >
+    {{ label }}
+    <span *ngIf="required || control?.hasValidator(Validators.required)" class="text-red-500 ml-1">*</span>
+  </label>
+
+  <input
+    [readonly]="readonly"
+    [type]="type"
+    [ngClass]="getInputClasses()"
+    #input
+    [id]="id"
+    [placeholder]="placeholder"
+    [value]="value"
+    (focusout)="onTouch()"
+    (input)="onChange(input.value)"
+  />
+
+  <div class="min-h-[1.25rem]">
+    <ng-container *ngIf="control?.touched">
+      <ng-content select="app-error"></ng-content>
+    </ng-container>
+  </div>
+</div>

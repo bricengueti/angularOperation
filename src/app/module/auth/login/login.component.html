@@ -1,0 +1,53 @@
+<div class="min-h-screen flex items-center justify-center bg-gradient-to-br from-primary to-secondary">
+  <div class="bg-white rounded-lg shadow-lg p-8 w-full max-w-md">
+    <div class="flex items-center justify-center mb-6">
+      <div class="w-1 h-8 bg-primary mr-2"></div>
+      <div class="text-[32px] font-extrabold text-dark">CRUD OPERATIONS</div>
+    </div>
+    <div class="text-xl text-center text-[22px] font-bold text-gray-800 mb-2">SIGN IN</div>
+
+    <p class="text-gray-500 mb-6">Enter your credentials to access your account</p>
+
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <div class="mb-4">
+        <app-input
+          id="email"
+          label="Email"
+          type="email"
+          placeholder="Enter your email"
+          [required]="true"
+          formControlName="email">
+          <app-error *ngIf="f['username'].errors?.['required']">Email is required</app-error>
+        </app-input>
+      </div>
+
+      <div class="mb-6">
+        <app-input
+          id="password"
+          label="Password"
+          type="password"
+          placeholder="Enter your password"
+          [required]="true"
+          formControlName="password">
+          <app-error *ngIf="f['password'].errors?.['required']">Password is required</app-error>
+          <app-error *ngIf="f['password'].errors?.['minlength']">
+            Password must be at least 6 characters
+          </app-error>
+        </app-input>
+      </div>
+
+      <app-button
+        text="SIGN IN"
+        color="primary"
+        w="100"
+        type="submit"
+        [disabled]="loginForm.invalid || isLoading">
+      </app-button>
+
+      <div class="text-center mt-4">
+        <span class="text-gray-500">Forgot your password? </span>
+        <a href="#" class="text-primary hover:underline">Reset Password</a>
+      </div>
+    </form>
+  </div>
+</div>

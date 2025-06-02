@@ -1,0 +1,21 @@
+<!-- Bouton plein -->
+<button
+  *ngIf="!outline"
+  [type]="type"
+  (click)="click()"
+  [disabled]="disabled"
+  [ngClass]="getButtonClasses()">
+  <mat-icon *ngIf="mat" class="mr-2">{{ mat }}</mat-icon>
+  {{ text }}
+</button>
+
+<!-- Bouton outline -->
+<button
+  *ngIf="outline"
+  [type]="type"
+  (click)="click()"
+  [disabled]="disabled"
+  [ngClass]="getOutlineButtonClasses()">
+  <mat-icon *ngIf="mat" class="mr-2">{{ mat }}</mat-icon>
+  {{ text }}
+</button>

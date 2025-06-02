@@ -1,0 +1,120 @@
+<div class="min-h-screen flex items-center justify-center bg-gradient-to-br from-primary to-secondary">
+  <div class="bg-white rounded-lg shadow-lg p-8 w-full max-w-md">
+    <div class="flex items-center justify-center mb-6">
+      <div class="w-1 h-8 bg-primary mr-2"></div>
+      <div class="text-[32px] font-extrabold text-dark">CRUD OPERATIONS</div>
+    </div>
+    <div class="text-xl text-center text-[22px] font-bold text-gray-800 mb-2">SIGN UP</div>
+
+    <p class="text-gray-500 mb-6">Create your account to get started</p>
+
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+      <div class="mb-4">
+        <app-input
+          id="fullName"
+          label="First Name"
+          type="text"
+          placeholder="Enter your first name"
+          [required]="true"
+          formControlName="fullName">
+          <app-error *ngIf="f['fullName'].errors?.['required']">First name is required</app-error>
+          <app-error *ngIf="f['fullName'].errors?.['minlength']">First name must be at least 2 characters</app-error>
+        </app-input>
+      </div>
+
+      <div class="mb-4">
+        <app-input
+          id="username"
+          label="Last Name"
+          type="text"
+          placeholder="Enter your last name"
+          [required]="true"
+          formControlName="username">
+          <app-error *ngIf="f['username'].errors?.['required']">Last name is required</app-error>
+          <app-error *ngIf="f['username'].errors?.['minlength']">Last name must be at least 2 characters</app-error>
+        </app-input>
+      </div>
+
+      <div class="mb-4">
+        <app-input
+          id="email"
+          label="Email"
+          type="email"
+          placeholder="Enter your email"
+          [required]="true"
+          formControlName="email">
+          <app-error *ngIf="f['email'].errors?.['required']">Email is required</app-error>
+          <app-error *ngIf="f['email'].errors?.['email']">Please enter a valid email</app-error>
+        </app-input>
+      </div>
+
+      <div class="mb-4">
+        <app-input
+          id="password"
+          label="Password"
+          type="password"
+          placeholder="Enter your password"
+          [required]="true"
+          formControlName="password">
+          <app-error *ngIf="f['password'].errors?.['required']">Password is required</app-error>
+          <app-error *ngIf="f['password'].errors?.['minlength']">
+            Password must be at least 8 characters
+          </app-error>
+          <app-error *ngIf="f['password'].errors?.['pattern']">
+            Password must contain at least one uppercase letter, one lowercase letter, and one number
+          </app-error>
+        </app-input>
+      </div>
+
+      <div class="mb-6">
+        <app-input
+          id="confirmPassword"
+          label="Confirm Password"
+          type="password"
+          placeholder="Confirm your password"
+          [required]="true"
+          formControlName="confirmPassword">
+          <app-error *ngIf="f['confirmPassword'].errors?.['required']">Password confirmation is required</app-error>
+          <app-error *ngIf="f['confirmPassword'].errors?.['passwordsMismatch']">
+            Passwords do not match
+          </app-error>
+        </app-input>
+      </div>
+
+      <!-- Checkbox pour les conditions d'utilisation -->
+      <div class="mb-6">
+        <label class="flex items-start space-x-3">
+          <input
+            type="checkbox"
+            formControlName="acceptTerms"
+            class="mt-1 h-4 w-4 text-primary focus:ring-primary border-gray-300 rounded"
+          >
+          <span class="text-sm text-gray-700">
+            I agree to the
+            <a href="#" class="text-primary hover:underline">Terms of Service</a>
+            and
+            <a href="#" class="text-primary hover:underline">Privacy Policy</a>
+          </span>
+        </label>
+        <div *ngIf="f['acceptTerms'].errors?.['required'] && (f['acceptTerms'].dirty || f['acceptTerms'].touched)"
+             class="text-red-500 text-sm mt-1">
+          You must accept the terms and conditions
+        </div>
+      </div>
+
+      <app-button
+        [text]="(postLoadingService.postLoading$ | async) ? 'blabla...' : 'CREATE ACCOUNT'"
+        color="primary"
+        width="100%"
+        type="submit"
+        [disabled]="postLoadingService.postLoading$ | async"
+      >
+      </app-button>
+
+      <div class="text-center mt-4">
+        <span class="text-gray-500">Already have an account? </span>
+        <a routerLink="/auth/login" class="text-primary hover:underline">Sign In</a>
+      </div>
+    </form>
+  </div>
+</div>

@@ -1,0 +1,27 @@
+/* Styles spécifiques au header */
+
+/* Animation pour le badge de notification */
+.notification-badge {
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+/* Style personnalisé pour le champ de recherche */
+.search-input:focus {
+  box-shadow: 0 0 0 3px rgba(254, 175, 0, 0.1);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .search-container {
+    max-width: 200px;
+  }
+}

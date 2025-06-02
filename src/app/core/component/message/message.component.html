@@ -1,0 +1,6 @@
+<div *ngIf="message" class="message-container" [class]="messageClass">
+  <div class="message-content">
+    {{ message.text }}
+  </div>
+  <button class="close-button" (click)="close()">×</button>
+</div>

@@ -1,0 +1,12 @@
+/* Styles spécifiques au composant register si nécessaire */
+
+/* Style personnalisé pour la checkbox */
+input[type="checkbox"]:checked {
+  background-color: #FEAF00;
+  border-color: #FEAF00;
+}
+
+input[type="checkbox"]:focus {
+  ring-color: #FEAF00;
+  border-color: #FEAF00;
+}

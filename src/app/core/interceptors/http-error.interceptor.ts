@@ -49,8 +49,6 @@ function getFriendlyErrorMessage(error: HttpErrorResponse): string {
   // 3. Message générique avec code d'erreur
   return `Erreur ${error.status || 'inconnue'} - Veuillez réessayer`;
 }
-
-
 // Flexibilité avancée :
 
 // Mécanisme d'opt-out via header X-Skip-Error-Interceptor

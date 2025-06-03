@@ -56,10 +56,15 @@ export class AuthenticationService {
     return !!this.currentUserValue;
   }
 
+  // getToken(): string {
+  //   const currentUser = this.currentUserValue;
+  //   return currentUser?.token;
+  // }
+
   getToken(): string {
-    const currentUser = this.currentUserValue;
-    return currentUser?.token;
-  }
+  const currentUser = this.currentUserValue;
+  return currentUser?.accessToken; // Changé de 'token' à 'accessToken'
+}
 
   refreshToken(): Observable<any> {
     const currentUser = this.currentUserValue;

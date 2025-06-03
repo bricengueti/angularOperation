@@ -11,12 +11,11 @@
     <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
       <div class="mb-4">
         <app-input
-          id="email"
+          id="username"
           label="Email"
-          type="email"
+          type="username"
           placeholder="Enter your email"
-          [required]="true"
-          formControlName="email">
+          formControlName="username">
           <app-error *ngIf="f['username'].errors?.['required']">Email is required</app-error>
         </app-input>
       </div>
@@ -37,11 +36,14 @@
       </div>
 
       <app-button
+
+        [text]="(postLoadingService.postLoading$ | async) ? 'blabla...' : 'CREATE ACCOUNT'"
         text="SIGN IN"
         color="primary"
         w="100"
         type="submit"
-        [disabled]="loginForm.invalid || isLoading">
+        [disabled]="postLoadingService.postLoading$ | async"
+        >
       </app-button>
 
       <div class="text-center mt-4">

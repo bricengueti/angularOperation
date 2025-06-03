@@ -54,14 +54,14 @@ export class LoginComponent implements OnInit {
 
 
 
-this.authService.login(this.loginForm.value.password,this.loginForm.value.username)
+this.authService.login(this.loginForm.value.username,this.loginForm.value.password)
     .pipe(
       takeUntilDestroyed(this.destroyRef)
     )
     .subscribe({
       next: (response) => {
-        this.messageService.showSuccess('Inscription réussie!');
-        this.router.navigate(['auth/login']);
+        this.messageService.showSuccess('connexion réussie!');
+        this.router.navigate(['']);
       }
     });
   }

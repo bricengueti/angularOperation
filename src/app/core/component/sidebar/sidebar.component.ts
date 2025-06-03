@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
+import { SharedModule } from '../../../shared/shared.module';
 
 @Component({
   selector: 'app-sidebar',
   standalone: true,
-  imports: [CommonModule],
+  imports: [SharedModule],
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.scss']
 })
@@ -29,8 +30,8 @@ export class SidebarComponent implements OnInit {
     const currentUrl = this.router.url;
     if (currentUrl.includes('/home')) {
       this.activeRoute = 'home';
-    } else if (currentUrl.includes('/course')) {
-      this.activeRoute = 'course';
+    } else if (currentUrl.includes('/list')) {
+      this.activeRoute = 'list';
     } else if (currentUrl.includes('/students')) {
       this.activeRoute = 'students';
     } else if (currentUrl.includes('/payment')) {
